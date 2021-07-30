@@ -1,0 +1,57 @@
+<!--pages/home/home.wxml-->
+<!-- 轮播图 -->
+<view>
+  <swiper indicator-dots="true" autoplay="true" interval="4000" circular="true">
+    <block wx:for="{{banner}}" wx:key="*this">
+      <swiper-item>
+        <navigator open-type="navigate" url="/pages/list/list">
+          <image src="{{item.picUrl}}" mode="widthFix" style="width:100%;height:100%;"></image>
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<!-- 搜索框 -->
+<view class="search_root">
+  <input class="search_input" placeholder="搜索菜品" confirm-type="search" bindconfirm="goSearch" bindinput="getInput" />
+  <image class="search_image" src="/images/search.png" bindtap="goSearch"></image>
+</view>
+
+<!-- 导航栏 -->
+<view class="category_root">
+  <view class="category_item" bindtap="golist">
+    <image class="category_image" src="/images/home1.png"></image>
+    <text class="category_word">扫码点餐</text>
+  </view>
+  <view class="category_item" bindtap="golist">
+    <image class="category_image" src="/images/home2.png"></image>
+    <text class="category_word">菜品浏览</text>
+  </view>
+  <view class="category_item" bindtap="goqueue">
+    <image class="category_image" src="/images/home3.png"></image>
+    <text class="category_word">排号等位</text>
+  </view>
+  <view class="category_item" bindtap="goaddress">
+    <image class="category_image" src="/images/home4.png"></image>
+    <text class="category_word">饭店信息</text>
+  </view>
+</view>
+
+<!-- 热门推荐 -->
+<view>
+  <!-- 标题 -->
+  <view class="hot_tip">
+    <text class="hot_tip_title">热门推荐</text>
+    <text class="hot_tip_more" bindtap="golist">更多></text>
+  </view>
+  <!-- 菜品列表 -->
+  <view class="hot_list" wx:for="{{hotlist}}" wx:key="_id" bindtap="golist">
+    <image class="hot_list_image" src="{{item.icon}}"></image>
+    <view>
+      <view class="hot_list_name">{{item.name}} </view>
+      <view class="hot_list_sell">销量:{{item.sell}} </view>
+      <view class="hot_list_price">¥:{{item.price}} </view>
+    </view>
+  </view>
+</view>

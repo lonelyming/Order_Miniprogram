@@ -1,0 +1,19 @@
+<!--pages/address/address.wxml-->
+<map class="map" longitude="{{lon}}" latitude="{{lat}}" scale="15" markers="{{markers}}" bindmarkertap="clickMap" show-location></map>
+
+<view>
+  {{markers[0].name}}
+</view>
+
+<view class="address">
+  地址：{{markers[0].address}}
+</view>
+
+<view class="phone" bindtap="CallPhone">
+  电话：{{markers[0].phone}}
+</view>
+
+
+
+
+

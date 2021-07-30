@@ -1,0 +1,10 @@
+/* pages/address/address.wxss */
+.map{
+  width: 100%;
+  height: 1050rpx;
+}
+
+.phone{
+  color: blue;
+  text-decoration: underline;
+}

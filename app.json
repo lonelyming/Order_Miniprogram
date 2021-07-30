@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/list/list",
+    "pages/admin/admin",
+    "pages/order/order",
+    "pages/address/address",
+    "pages/cookpage/cookpage",
+    "pages/arrange/arrange",
+    "pages/queue/queue",
+    "pages/pay/pay",
+    "pages/person/person",
+    "pages/comment/comment"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "云开发点餐小程序",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#A2A2A2",
+    "selectedColor": "#E0AE64",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [{
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_HL.png"
+      },
+      {
+        "pagePath": "pages/person/person",
+        "text": "我的",
+        "iconPath": "images/person.png",
+        "selectedIconPath": "images/person_HL.png"
+      }    
+    ],
+    "position": "bottom",
+    "custom": false
+
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "导航需要"
+    }
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

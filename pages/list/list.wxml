@@ -1,2 +1,19 @@
 <!--pages/list/list.wxml-->
-<text>pages/list/list.wxml</text>
+<view>
+  <view class="list" wx:for="{{foodlist}}" wx:key="_id">
+    <image class="list_image" src="{{item.icon}}"></image>
+    <view>
+      <view class="list_name">{{item.name}} </view>
+      <view class="list_sell">销量:{{item.sell}} </view>
+      <view class="list_bottom">
+        <view class="list_price">¥:{{item.price}} </view>
+        <view class="right_bottom">
+          <image class="plusminus" src="/images/jian.png" bindtap="minus" data-id="{{item._id}}"></image>
+        <text class="number">{{item.num?item.num:0}}</text>
+        <image class="plusminus" src="/images/jia.png" bindtap="plus" data-id="{{item._id}}"></image>
+        </view>
+      </view>
+
+    </view>
+  </view>
+</view>

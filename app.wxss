@@ -6,7 +6,7 @@
   box-sizing: border-box;
 } 
 
-button {
+/* button {
   background: initial;
 }
 
@@ -16,7 +16,7 @@ button:focus{
 
 button::after{
   border: none;
-}
+} */
 
 
 page {

@@ -5,9 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {},
-    hasUserInfo: false,
-    canIUseGetUserProfile: false,
+    userInfo: {}, //用户信息
+    hasUserInfo: false, //用户登录状态
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
@@ -15,7 +14,7 @@ Page({
     wx.getUserProfile({
       desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
-        console.log('授权成功',res)
+        wx.setStorageSync('user', res.userInfo)
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
@@ -23,14 +22,31 @@ Page({
       }
     })
   },
-  
+  bindViewTap() {
+    wx.showModal({
+      title: '退出登录',
+      content: '确认退出登录',
+      success: (res) => {
+        if (res.confirm) {
+          this.setData({
+            hasUserInfo: false,
+            userInfo: {}
+          })
+          wx.removeStorageSync('user')
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (wx.getUserProfile) {
+    //获取缓存
+    if (wx.getStorageSync('user')) {
+      let user = wx.getStorageSync('user')
       this.setData({
-        canIUseGetUserProfile: true
+        hasUserInfo: true,
+        userInfo: user
       })
     }
   },

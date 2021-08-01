@@ -1,1 +1,55 @@
 /* pages/list/list.wxss */
+.list {
+  display: flex;
+  margin: 10rpx 30rpx;
+  border-bottom: 1px solid gainsboro;
+}
+
+.list_image {
+  width: 240rpx;
+  height: 160rpx;
+  min-width: 240rpx;
+  margin-right: 25rpx;
+}
+
+.list_name {
+  font-size: 35rpx;
+  width: 500rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.list_sell {
+  font-size: 30rpx;
+  color: gray;
+}
+
+.list_bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+
+.right_bottom{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 50rpx;
+}
+
+.list_price {
+  flex: 1;
+  font-size: 35rpx;
+  color: orange;
+}
+
+.plusminus{
+  width: 50rpx;
+  height: 50rpx;
+  align-items: center;
+}
+
+.number{
+  margin: 20rpx;
+}

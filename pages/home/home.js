@@ -38,13 +38,14 @@ Page({
   //触发搜索事件
   goSearch() {
     if (search_word && search_word.length > 0) {
-      console.log('直接跳转', search_word)
+      console.log('搜索跳转', search_word)
       wx.navigateTo({
         url: '/pages/list/list?key=' + search_word,
       })
     }
     else {
-      console.log('直接跳转', search_word)
+      console.log('直接跳转')
+      this.golist()
     }
   },
 
@@ -77,7 +78,7 @@ Page({
       .then(res => {
         console.log('热门菜品列表获取成功', res)
         this.setData({
-          hotlist:res.result.data
+          hotlist: res.result.data
         })
       })
       .catch(res => {

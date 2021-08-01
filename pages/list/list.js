@@ -6,31 +6,94 @@ Page({
    * 页面的初始数据
    */
   data: {
+    foodlist: [],
+  },
 
+  getList(key) {
+    if (key) {
+      db.collection('food')
+        .where({
+          //模糊搜索
+          name: db.RegExp({
+            regexp: key,
+            options: 'i'//不区分大小写
+          })
+        }).get()
+        .then(res => {
+          console.log('搜索成功', res)
+          let list = res.data
+          if (list && list.length > 0) {
+            list.forEach(item => {
+              item.num = 0
+            })
+          }
+          list.forEach(food => {
+            if (!food.num) {
+              food.num = 0
+            }
+          })
+          this.setData({
+            foodlist: res.data,
+          })
+        })
+        .catch(res => {
+          console.log('搜索失败', res)
+        })
+    }
+    else {
+      wx.cloud.callFunction({
+        name: 'getFoodList',
+      })
+        .then(res => {
+          console.log('菜品列表获取成功', res)
+          res.result.data.forEach(food => {
+            if (!food.num) {
+              food.num = 0
+            }
+          })
+          this.setData({
+            foodlist: res.result.data
+          })
+        })
+        .catch(res => {
+          console.log('菜品获取失败', res)
+        })
+    }
+  },
+
+  plus(e) {
+    let list = this.data.foodlist
+    let id = e.currentTarget.dataset.id
+    list.forEach(food => {
+      if (food._id == id) {
+        food.num += 1
+      }
+    })
+    this.setData({
+      foodlist: list
+    })
+  },
+
+  minus(e) {
+    let list = this.data.foodlist
+    let id = e.currentTarget.dataset.id
+    list.forEach(food => {
+      if (food._id == id) {
+        if (food.num > 0) {
+          food.num -= 1
+        }
+      }
+    })
+    this.setData({
+      foodlist: list
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    if (options.key) {
-      db.collection('food')
-        .where({
-          //模糊搜索
-          name: db.RegExp({
-            regexp: options.key,
-            options: 'i'//不区分大小写
-          })
-        }).get()
-        .then(res => {
-          console.log('搜索成功', res)
-        })
-        .catch(res => {
-          console.log('搜索失败', res)
-        })
-    }
-
+    this.getList(options.key)
   },
 
   /**

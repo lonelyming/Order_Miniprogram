@@ -1,5 +1,6 @@
 <!--pages/list/list.wxml-->
-<view>
+<!-- 菜品列表 -->
+<view class="food_list">
   <view class="list" wx:for="{{foodlist}}" wx:key="_id">
     <image class="list_image" src="{{item.icon}}"></image>
     <view>
@@ -8,12 +9,50 @@
       <view class="list_bottom">
         <view class="list_price">¥:{{item.price}} </view>
         <view class="right_bottom">
-          <image class="plusminus" src="/images/jian.png" bindtap="minus" data-id="{{item._id}}"></image>
-        <text class="number">{{item.num?item.num:0}}</text>
-        <image class="plusminus" src="/images/jia.png" bindtap="plus" data-id="{{item._id}}"></image>
+          <image wx:if="{{item.num?item.num:0}}" class="plusminus" src="/images/jian.png" bindtap="minus"
+            data-id="{{item._id}}"></image>
+          <text wx:if="{{item.num?item.num:0}}" class="number">{{item.num?item.num:0}}</text>
+          <image class="plusminus" src="/images/jia.png" bindtap="plus" data-id="{{item._id}}"></image>
         </view>
       </view>
-
     </view>
   </view>
+</view>
+
+<!-- 底部购物车区域 -->
+<view class="bottom_all">
+  <view bindtap="openCart" class="left_cart">
+    <image class="cart_shop" src="/images/shopCart.png"></image>
+  </view>
+  <view class="total_price">总计{{totalprice}}元，{{totalnum}}件</view>
+  <view class="choose_ok">选好了</view>
+</view>
+
+
+<!-- 购物车蒙层 -->
+<view wx:if="{{mask}}" class="mask_bg" bindtap="closeCart"></view>
+
+<!-- 点击购物车弹出详情 -->
+<view wx:if="{{mask}}" class="cart_content">
+  <view class="cart_content_top">
+    <view bindtap="closeCart">返回</view>
+    <view class="cart_content_title">购物车</view>
+    <view bindtap="cleanCart">清空购物车</view>
+  </view>
+  <scroll-view class="cart_content_list">
+    <view wx:for="{{cartlist}}" wx:key="_id">
+      <view class="cart_item">
+        <view class="cart_item_left">
+          <view>{{item.name}}</view>
+          <view class="cart_item_price">¥ : {{item.price}}</view>
+        </view>
+        <image wx:if="{{item.num?item.num:0}}" class="plusminus" src="/images/jian.png" bindtap="minus"
+          data-id="{{item._id}}"></image>
+        <text wx:if="{{item.num?item.num:0}}" class="number">{{item.num?item.num:0}}</text>
+        <image class="plusminus" src="/images/jia.png" bindtap="plus" data-id="{{item._id}}"></image>
+        <image class="close_item" src="/images/close.png" bindtap="closeCartItem" data-id="{{item._id}}"></image>
+      </view>
+    </view>
+
+  </scroll-view>
 </view>

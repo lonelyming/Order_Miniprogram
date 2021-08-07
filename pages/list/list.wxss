@@ -1,7 +1,11 @@
 /* pages/list/list.wxss */
+.food_list{
+  margin-bottom: 80rpx;
+}
+
 .list {
   display: flex;
-  margin: 10rpx 30rpx;
+  margin: 10rpx 10rpx;
   border-bottom: 1px solid gainsboro;
 }
 
@@ -51,5 +55,118 @@
 }
 
 .number{
-  margin: 20rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.bottom_all{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  background-color: #fef4d1;
+  display: flex;
+  z-index: 103;
+}
+
+.left_cart{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background-color: #ff9600;
+  position: absolute;
+  top: -50%;
+  margin-left: 40rpx;
+}
+
+.cart_shop{
+  width: 85rpx;
+  height: 85rpx;
+  margin-left: 18rpx;
+  margin-top: 18rpx;
+}
+
+.total_price{
+  flex: 1;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 34rpx;
+  margin-left: 90rpx;
+}
+
+.choose_ok{
+  text-align: center;
+  width: 200rpx;
+  background-color: #f4c903;
+  color: white;
+  line-height: 100rpx;
+}
+
+.mask_bg{
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* 背景颜色透明度 */
+  opacity: 0.4;
+  background-color: black;
+  /* 设置组件层级，数字越大铺在越上面 */
+  z-index: 100;
+}
+
+.cart_content{
+  position: fixed;
+  left: 0;
+  bottom: 100rpx;
+  right: 0;
+  height: 600rpx;
+  background-color: white;
+  z-index: 101;
+  overflow: auto;
+}
+
+.cart_content_top{
+  display: flex;
+  justify-content: space-between;
+  background-color: #f4c903;
+  height: 70rpx;
+  color: white;
+  padding: 5rpx 15rpx;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 102;
+}
+
+.cart_content_title{
+  font-size: 45rpx;
+}
+
+.cart_content_list{
+  margin-top: 80rpx;
+}
+
+.cart_item{
+  display: flex;
+  border-bottom: 1px solid gray;
+  padding: 5rpx 20rpx;
+  align-items: center;
+}
+
+.cart_item_left{
+  flex: 1;
+}
+
+.cart_item_price{
+  color: orange;
+  font-size: 33rpx;
+}
+
+.close_item{
+  padding-left: 30rpx;
+  width: 50rpx;
+  height: 50rpx;
 }
